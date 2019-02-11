@@ -21,8 +21,8 @@
         <h2>{$msj}</h2>
         <form action="index.php" method="POST">
             <fieldset>
-                <p><label for="lorem">Usuario &nbsp</label><input type="text" name="user" /></p>
-                <p><label for="ipsum">Contraseña &nbsp</label><input type="text" name="pass" /></p>
+                <p><label for="user">Usuario &nbsp</label><input type="text" name="user" /></p>
+                <p><label for="pass">Contraseña &nbsp</label><input type="password" name="pass" /></p>
                 <input type="submit" name="submit" value="login">
             </fieldset>
         </form>

@@ -14,7 +14,7 @@ if (isset($_SESSION['conexion']['user'])) {
     $user = $_SESSION['conexion']['user'];
     $plantilla->assign('user', $user);
     $bd = new BBDD();
-    $productos = $bd->selectQuery("select * from producto");
+    $productos = $bd->selectQuery("select cod, nombre_corto, PVP from producto");
     $plantilla->assign('productos', $productos);
     $plantilla->display("listaProductos.tpl");
 } else {

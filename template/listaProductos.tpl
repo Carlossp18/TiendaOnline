@@ -61,6 +61,7 @@
                 margin-left: 68%;
             }
 
+
             .cuadro{
                 margin: auto;
                 width: 50%;
@@ -99,7 +100,7 @@
             <form action="index.php" method="POST">
                 <p id="logo">TIENDAONLINE</p>
                 <p id="hola">
-                    <a><img align='middle' src="images/shop.png" alt="Smiley face" height="42" width="42" ></a>
+                    <a><img id="shopo" align='middle' src="images/shop.png" alt="Smiley face" height="42" width="42" ></a>
                     Hola, <a>{$user}</a> 
                     <input type="submit" name="submit" value="desconectar">
                 </p>
@@ -111,6 +112,8 @@
         <div class="cuadro">
             {foreach from=$productos item=producto}
                 <form action="productos.php" method="POST">
+                    <input type="hidden" name="cod[cod]" value="{$producto['cod']}">
+                    <input type="hidden" name="cod[PVP]" value="{$producto['PVP']}">
                     <div>
                         {foreach from=$producto item=p}
                             {$p}

@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
             $pass = $_POST['pass'];
             $passC = md5($pass);
             $bd = new BBDD();
-            if ($bd->existeValue("select count(name) from usuarios where name='$user' and password='$passC'")) {
+            if ($bd->verificarCliente($user, $passC)) {
                 $_SESSION['conexion']['user'] = $user;
                 header("Location:productos.php");
             } else {

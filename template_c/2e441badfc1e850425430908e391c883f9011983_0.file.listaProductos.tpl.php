@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-02-11 11:51:17
+/* Smarty version 3.1.33, created on 2019-02-18 12:11:34
   from '/var/www/TiendaOnline/template/listaProductos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5c6153a581a1c3_20519942',
+  'unifunc' => 'content_5c6a92e6906139_33917415',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2e441badfc1e850425430908e391c883f9011983' => 
     array (
       0 => '/var/www/TiendaOnline/template/listaProductos.tpl',
-      1 => 1549882276,
+      1 => 1550488286,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5c6153a581a1c3_20519942 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5c6a92e6906139_33917415 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="en">
     <head>
@@ -84,6 +84,7 @@ function content_5c6153a581a1c3_20519942 (Smarty_Internal_Template $_smarty_tpl)
                 margin-left: 68%;
             }
 
+
             .cuadro{
                 margin: auto;
                 width: 50%;
@@ -122,7 +123,7 @@ function content_5c6153a581a1c3_20519942 (Smarty_Internal_Template $_smarty_tpl)
             <form action="index.php" method="POST">
                 <p id="logo">TIENDAONLINE</p>
                 <p id="hola">
-                    <a><img align='middle' src="images/shop.png" alt="Smiley face" height="42" width="42" ></a>
+                    <a><img id="shopo" align='middle' src="images/shop.png" alt="Smiley face" height="42" width="42" ></a>
                     Hola, <a><?php echo $_smarty_tpl->tpl_vars['user']->value;?>
 </a> 
                     <input type="submit" name="submit" value="desconectar">
@@ -139,6 +140,10 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['producto']->value) {
 ?>
                 <form action="productos.php" method="POST">
+                    <input type="hidden" name="cod[cod]" value="<?php echo $_smarty_tpl->tpl_vars['producto']->value['cod'];?>
+">
+                    <input type="hidden" name="cod[PVP]" value="<?php echo $_smarty_tpl->tpl_vars['producto']->value['PVP'];?>
+">
                     <div>
                         <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['producto']->value, 'p');

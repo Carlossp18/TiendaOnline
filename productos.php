@@ -17,6 +17,19 @@ if (isset($_SESSION['conexion']['user'])) {
     $productos = $bd->selectQuery("select cod, nombre_corto, PVP from producto");
     $plantilla->assign('productos', $productos);
     $plantilla->display("listaProductos.tpl");
+    if (isset($_POST['submit'])) {
+        switch ($_POST['submit']) {
+            case 'Anadir':
+                Cesta::$cesta = $_SESSION['cesta'];
+                $plantilla->display("carrito.tpl");
+                $item = $_POST['cod'];
+                Cesta::anadirProducto($item);
+                $_SESSION['cesta'] = Cesta::$cesta;
+                var_dump(Cesta::$cesta);
+                $plantilla->assign('cesta', Cesta::$cesta);
+                break;
+        }
+    }
 } else {
     $msj = "Ha de autenticarse primero.";
     $plantilla->assign('msj', $msj);

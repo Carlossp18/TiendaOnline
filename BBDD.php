@@ -104,6 +104,13 @@ class BBDD {
         return $tulbas;
     }
 
+    public function verificarCliente($user, $pass) {
+        $sentencia = "select count(name) from usuarios where name='$user' and password='$pass'";
+        $valor = $this->conexion->query($sentencia);
+        $existe = $valor->fetch(PDO::FETCH_ASSOC);
+        return $existe['count(name)'];
+    }
+
 //    public function preparedStatementPDO($arrayIndexado, $arrayIndexadoNuevo, $tabla) {
 //        $valores = "";
 //        foreach ($arrayIndexadoNuevo as $campo => $valor) {

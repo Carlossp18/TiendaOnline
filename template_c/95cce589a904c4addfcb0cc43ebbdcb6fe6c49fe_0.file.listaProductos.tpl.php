@@ -1,4 +1,27 @@
-<!doctype html>
+<?php
+/* Smarty version 3.1.33, created on 2019-02-25 00:15:35
+  from 'C:\xampp\htdocs\TiendaOnline\template\listaProductos.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5c7325972f9008_63168755',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '95cce589a904c4addfcb0cc43ebbdcb6fe6c49fe' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\TiendaOnline\\template\\listaProductos.tpl',
+      1 => 1551050026,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5c7325972f9008_63168755 (Smarty_Internal_Template $_smarty_tpl) {
+?><!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -101,7 +124,8 @@
                 <p id="logo">TIENDAONLINE</p>
                 <p id="hola">
                     <a><img id="shopo" align='middle' src="images/shop.png" alt="Smiley face" height="42" width="42" ></a>
-                    Hola, <a>{$user}</a> 
+                    Hola, <a><?php echo $_smarty_tpl->tpl_vars['user']->value;?>
+</a> 
                     <input type="submit" name="submit" value="desconectar">
                 </p>
             </form>
@@ -110,19 +134,38 @@
             Hola que tal loco
         </div>
         <div class="cuadro">
-            {foreach from=$productos item=producto}
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['productos']->value, 'producto');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['producto']->value) {
+?>
                 <form action="productos.php" method="POST">
-                    <input type="hidden" name="cod[cod]" value="{$producto['cod']}">
-                    <input type="hidden" name="cod[PVP]" value="{$producto['PVP']}">
-                    <input type="hidden" name="cod[name]" value="{$producto['nombre_corto']}">
+                    <input type="hidden" name="cod[cod]" value="<?php echo $_smarty_tpl->tpl_vars['producto']->value['cod'];?>
+">
+                    <input type="hidden" name="cod[PVP]" value="<?php echo $_smarty_tpl->tpl_vars['producto']->value['PVP'];?>
+">
+                    <input type="hidden" name="cod[name]" value="<?php echo $_smarty_tpl->tpl_vars['producto']->value['nombre_corto'];?>
+">
                     <div>
-                        {foreach from=$producto item=p}
-                            {$p}
-                        {/foreach}
+                        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['producto']->value, 'p');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['p']->value) {
+?>
+                            <?php echo $_smarty_tpl->tpl_vars['p']->value;?>
+
+                        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </div>
                     <input type="submit" name="submit" value="Anadir">
                 </form>
-            {/foreach}
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </div>
     </body>
-</html>
+</html><?php }
+}

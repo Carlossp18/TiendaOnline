@@ -21,7 +21,7 @@ class BBDD {
     private $pass;
     private $bd;
 
-    public function __construct($host = "172.17.0.2", $user = "root", $pass = "root", $bd = "dwes") {
+    public function __construct($host = "127.0.0.1", $user = "root", $pass = "", $bd = "dwes") {
         $this->host = $host;
         $this->user = $user;
         $this->pass = $pass;
@@ -73,7 +73,7 @@ class BBDD {
      * @param string $tableName
      * @return array
      */
-    public function nombresCampos(string $tableName): array {
+    public function nombresCampos(string $tableName) {
         $campos = [];
         $consulta = "SHOW COLUMNS FROM $tableName";
 
@@ -84,7 +84,7 @@ class BBDD {
         return $campos;
     }
 
-    public function nombresCamposPDO(string $tableName): array {
+    public function nombresCamposPDO(string $tableName) {
         $campos = [];
         $consulta = "SHOW COLUMNS FROM $tableName";
 

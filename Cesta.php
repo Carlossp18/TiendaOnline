@@ -11,7 +11,6 @@ class Cesta {
     static public $total;
 
     public static function anadirProducto($producto) {
-        var_dump($producto);
         /*        $cod = $producto['cod'];
 
 
@@ -31,7 +30,7 @@ class Cesta {
             self::$cesta[$cod]['cantidad'] = 1;
             self::$cesta[$cod]['pvp'] = $pvp;
         }
-        self::$total+=$pvp;
+        self::$total += $pvp;
     }
 
     private static function comprobarProducto($cod) {
@@ -41,14 +40,27 @@ class Cesta {
             return false;
     }
 
-    public static function eliminarProducto($cod) {
+    public static function eliminarProducto2($cod) {
         $cantidad = self::$cesta[$cod]['cantidad'];
         var_dump($cantidad);
         $pvp = self::$cesta[$cod]['pvp'];
         var_dump($pvp);
         $sum = $pvp * $cantidad;
-        self::$total-=$sum;
+        self::$total -= $sum;
         unset(self::$cesta["$cod"]);
+    }
+
+    public static function eliminarProducto($cod) {
+        $cantidad = self::$cesta[$cod]['cantidad'];
+        $pvp = self::$cesta[$cod]['pvp'];
+        if ($cantidad == 1)
+            unset(self::$cesta["$cod"]);
+        else
+            self::$cesta["$cod"]["cantidad"] -= 1;
+
+        self::$total -= $pvp;
+        if (self::$total < 0)
+            self::$total = 0;
     }
 
     public static function vaciar() {

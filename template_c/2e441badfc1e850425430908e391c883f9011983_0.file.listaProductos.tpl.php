@@ -1,122 +1,33 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-02-18 12:11:34
+/* Smarty version 3.1.33, created on 2019-02-26 11:05:30
   from '/var/www/TiendaOnline/template/listaProductos.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5c6a92e6906139_33917415',
+  'unifunc' => 'content_5c750f6a78c286_65563066',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2e441badfc1e850425430908e391c883f9011983' => 
     array (
       0 => '/var/www/TiendaOnline/template/listaProductos.tpl',
-      1 => 1550488286,
+      1 => 1551175525,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:carrito.tpl' => 1,
   ),
 ),false)) {
-function content_5c6a92e6906139_33917415 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5c750f6a78c286_65563066 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>Document</title>
-        <style>
-            body{
-                margin: 0;
-                background-color: lightgray;
-                font-family: Arial;
-            }
-
-            #welcome{
-                width: 100%;
-                height: 70px;
-                background-color: bisque;
-            }
-
-            #welcome input{
-                padding: 5px;
-                text-align: center;
-                text-decoration: none;
-                outline: none;
-                color: #fff;
-                background-color: #d13e3e;
-                border: none;
-                border-radius: 15px;
-            }
-
-            #hola{
-                padding-top: 8px;
-                float: right;
-                margin-right: 20px;
-            }
-
-            #hola img{
-                margin-right: 10px;
-            }
-
-            #logo{
-                padding-top: 8px;
-                float: left;
-                margin-left: 20px;
-                display: inline;
-            }
-
-            #welcome a{
-                color: purple;
-            }
-
-            #shopCart{
-                display: none;
-            }
-
-            #hola a:hover #shopCart{
-                display: block;
-                height: 600px;
-                width: 30%;
-                background-color: yellow;
-                position: absolute;
-                margin-left: 68%;
-            }
-
-
-            .cuadro{
-                margin: auto;
-                width: 50%;
-                background:rgba(0,0,0,0.7);
-                color: white; 
-                padding: 20px;
-                border-radius: 25px;
-                margin-top: 20px;
-                margin-bottom: 20px;
-
-            }
-
-            .cuadro div{
-                padding-top: 5px;
-                padding-bottom: 5px;
-                width: 90%;
-                display: inline-block;
-            }
-
-            .cuadro input{
-                padding: 5px;
-                margin: 5px;
-                text-align: center;
-                text-decoration: none;
-                outline: none;
-                color: #fff;
-                background-color: #4CAF50;
-                border: none;
-                border-radius: 15px;
-            }
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="estilos.css">
     </head>
     <body>
         <div id="welcome">
@@ -133,6 +44,10 @@ function content_5c6a92e6906139_33917415 (Smarty_Internal_Template $_smarty_tpl)
         <div id="shopCart">
             Hola que tal loco
         </div>
+        <?php if ($_smarty_tpl->tpl_vars['carro']->value) {?>
+            <?php $_smarty_tpl->_subTemplateRender("file:carrito.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+        <?php }?>
         <div class="cuadro">
             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['productos']->value, 'producto');
@@ -143,6 +58,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['producto']->value) {
                     <input type="hidden" name="cod[cod]" value="<?php echo $_smarty_tpl->tpl_vars['producto']->value['cod'];?>
 ">
                     <input type="hidden" name="cod[PVP]" value="<?php echo $_smarty_tpl->tpl_vars['producto']->value['PVP'];?>
+">
+                    <input type="hidden" name="cod[name]" value="<?php echo $_smarty_tpl->tpl_vars['producto']->value['nombre_corto'];?>
 ">
                     <div>
                         <?php

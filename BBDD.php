@@ -132,23 +132,23 @@ class BBDD {
         $valores = "";
         foreach ($arrayIndexadoNuevo as $campo => $valor) {
             $valores .= "$campo = :$campo, ";
+            $update[":$campo"] = $valor;
         }
         $valores = substr($valores, 0, -2);
         $campos = "";
         foreach ($arrayIndexado as $campo => $valor) {
-            $campos .= "$campo = :" . $campo . "1 and ";
+            if ($valor != "") {
+                $campos .= "$campo = :" . $campo . "1 and ";
+                $update[":$campo" . "1"] = $valor;
+            } else {
+                $campos .= "$campo is null and ";
+            }
         }
         $campos = substr($campos, 0, -4);
         $sentencia = "UPDATE $tabla SET $valores WHERE $campos";
         var_dump($sentencia);
         $stmt = $this->conexion->prepare($sentencia);
 
-        foreach ($arrayIndexadoNuevo as $campo => $valor) {
-            $update[":$campo"] = $valor;
-        }
-        foreach ($arrayIndexado as $campo => $valor) {
-            $update[":$campo" . "1"] = $valor;
-        }
         var_dump($update);
         $stmt->execute($update);
     }

@@ -98,6 +98,10 @@ body{
     padding: 10px 0px 10px 10px;
 }
 
+#cesta td{
+    padding-bottom: 10px;
+}
+
 table{
     color: white;
 }
